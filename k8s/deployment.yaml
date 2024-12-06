@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  namespace: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: frontend
+        image: your-dockerhub-username/frontend-app
+        ports:
+        - containerPort: 80
+      - name: backend
+        image: your-dockerhub-username/backend-app
+        ports:
+        - containerPort: 8080
